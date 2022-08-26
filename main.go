@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 // creamos un struct para trabajar
@@ -33,7 +34,8 @@ func main() {
 
 	//creacion de la var
 	appli := fiber.New()
-
+	//usamos middleware
+	appli.Use(logger.New())
 	//usamos metodo get para escuhar
 	appli.Get("/", func(a *fiber.Ctx) error {
 		return a.SendString("Hola Usuario de API en Fiber")
@@ -41,7 +43,7 @@ func main() {
 	appli.Get("/usuario", handleUsuario)
 	//usamos el metodo post
 	appli.Post("/usuarios", CrearUsuario)
-
+	
 	//puerto en donde va a escuchar
 	appli.Listen(":3000")
 }
