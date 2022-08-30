@@ -14,7 +14,7 @@ type Usuario struct {
 // funcion
 func handleUsuario(c *fiber.Ctx) error {
 	usuario := Usuario{
-		Nombre:   "Mauro",
+		Nombre:   "Mauro Antonio",
 		Apellido: "Bogado",
 	}
 	return c.Status(fiber.StatusOK).JSON(usuario)
